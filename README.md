@@ -1,3 +1,6 @@
+**Note**: I don't have a working Pebble anymore.
+This repository is archived and will not be updated.
+
 # Pebble Health Export
 
 This is a simple application for Pebble Watch that extract all the raw
