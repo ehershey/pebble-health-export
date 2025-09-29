@@ -185,7 +185,7 @@ Pebble.addEventListener("showConfiguration", function() {
       settings += "&extra=" + cfg_extra_fields.join(",");
    }
 
-   Pebble.openURL("https://cdn.rawgit.com/faelys/pebble-health-export/v1.0/config.html" + settings);
+   Pebble.openURL("https://radams15.github.io/pebble-health-export/index.html" + settings);
 });
 
 Pebble.addEventListener("webviewclosed", function(e) {
