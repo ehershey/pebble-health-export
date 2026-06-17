@@ -5,7 +5,7 @@
   "companyName": "Natasha Kerensikova",
   "versionLabel": "1.2",
   "sdkVersion": "3",
-  "targetPlatforms": ["basalt", "chalk", "diorite"],
+  "targetPlatforms": ["basalt", "chalk", "diorite", "emery"],
   "enableMultiJS": true,
   "capabilities": [ "health", "configurable" ],
   "watchapp": {
