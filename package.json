@@ -28,10 +28,7 @@
             "media": []
         },
         "sdkVersion": "3",
-        "targetPlatforms": [
-            "basalt",
-            "chalk"
-        ],
+        
         "uuid": "d2cb5dda-d554-47d7-bed7-357bd1685ed7",
         "watchapp": {
             "watchface": false
