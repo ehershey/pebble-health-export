@@ -432,12 +432,11 @@ handle_last_sent(Tuple *tuple) {
 
 static void
 handle_received_tuple(Tuple *tuple) {
-	switch (tuple->key) {
-	    case MESSAGE_KEY_lastSent:
+	    if(tuple->key == MESSAGE_KEY_lastSent) {
 		handle_last_sent (tuple);
-		break;
+		}
 
-	    case MESSAGE_KEY_modalMessage:
+	    else if(tuple->key == MESSAGE_KEY_modalMessage) {
 		if (tuple->type != TUPLE_CSTRING) {
 			APP_LOG(APP_LOG_LEVEL_ERROR,
 			    "Unexpected type %d for MESSAGE_KEY_modalMessage",
@@ -446,62 +445,62 @@ handle_received_tuple(Tuple *tuple) {
 			set_modal_mode(true);
 			set_modal_message(tuple->value->cstring);
 		}
-		break;
+		}
 
-	    case MESSAGE_KEY_uploadDone:
+	    else if(tuple->key == MESSAGE_KEY_uploadDone) {
 		web.current_key = tuple_uint(tuple);
 		if (!web.first_key) web.first_key = web.current_key;
 		display_dirty = true;
 		if (auto_close && !sending_data
 		    && web.current_key >= phone.current_key)
 			close_app();
-		break;
+		}
 
-	    case MESSAGE_KEY_uploadStart:
+	    else if(tuple->key == MESSAGE_KEY_uploadStart) {
 		if (!web.first_key) {
 			web.first_key = tuple_uint(tuple);
 			web.start_time = time(0);
 		}
-		break;
+		}
 
-	    case MESSAGE_KEY_uploadFailed:
+	    else if(tuple->key == MESSAGE_KEY_uploadFailed) {
 		web.start_time = 0;
 		if (tuple->type == TUPLE_CSTRING)
 			snprintf(web.rate, sizeof web.rate,
 			    "%s", tuple->value->cstring);
-		break;
+		}
 
-	    case MESSAGE_KEY_cfgAutoClose:
+	    else if(tuple->key == MESSAGE_KEY_cfgAutoClose) {
 		auto_close = cfg_auto_close = (tuple_uint(tuple) != 0);
 		persist_write_bool(MESSAGE_KEY_cfgAutoClose, auto_close);
 		if (auto_close && !sending_data
 		    && web.current_key >= phone.current_key)
 			close_app();
-		break;
+		}
 
-	    case MESSAGE_KEY_cfgWakeupTime:
+	    else if(tuple->key == MESSAGE_KEY_cfgWakeupTime) {
 		cfg_wakeup_time = tuple_int(tuple);
 		persist_write_int(MESSAGE_KEY_cfgWakeupTime, cfg_wakeup_time + 1);
 		APP_LOG(APP_LOG_LEVEL_INFO,
 		    "wrote cfg_wakeup_time %i", cfg_wakeup_time);
-		break;
+		}
 
-	    case MESSAGE_KEY_cfgStart:
+	    else if(tuple->key == MESSAGE_KEY_cfgStart) {
 		APP_LOG(APP_LOG_LEVEL_INFO, "Starting configuration");
 		auto_close = false;
 		configuring = true;
-		break;
+		}
 
-	    case MESSAGE_KEY_cfgEnd:
+	    else if(tuple->key == MESSAGE_KEY_cfgEnd) {
 		APP_LOG(APP_LOG_LEVEL_INFO, "End of configuration");
 		auto_close = cfg_auto_close;
 		configuring = false;
-		break;
+		} else {
 
-	    default:
 		APP_LOG(APP_LOG_LEVEL_ERROR,
 		    "Unknown key %lu in received message",
 		    (unsigned long)tuple->key);
+
 	}
 }
 
