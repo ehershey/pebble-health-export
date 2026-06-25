@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-var cfg_endpoint = "https://webhook.site/c7a210fe-460b-4f38-a294-356981547ec7";
+var cfg_endpoint = "";
 var cfg_data_field = null;
 var cfg_bundle_max = 1;
 var cfg_bundle_separator = "\r\n";
