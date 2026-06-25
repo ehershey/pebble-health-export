@@ -1,38 +1,40 @@
 {
-    "author": "Natasha Kerensikova",
+    "author": "Natasha Kerensikova 2026-06-25",
     "dependencies": {},
     "keywords": [],
-    "name": "health-export",
+    "name": "health-export-2026-06-25",
     "pebble": {
         "capabilities": [
             "configurable",
             "health"
         ],
-        "displayName": "Pebble Health Export",
+        "displayName": "Pebble Health Export 2026-06-25",
         "enableMultiJS": true,
-        "messageKeys": {
-            "cfgAutoClose": 310,
-            "cfgEnd": 302,
-            "cfgStart": 301,
-            "cfgWakeupTime": 320,
-            "dataKey": 210,
-            "dataLine": 220,
-            "lastSent": 110,
-            "modalMessage": 120,
-            "uploadDone": 130,
-            "uploadFailed": 150,
-            "uploadStart": 140
-        },
+        "messageKeys": [
+            "lastSent",
+            "modalMessage",
+            "uploadDone",
+            "uploadStart",
+            "uploadFailed",
+            "dataKey",
+            "dataLine",
+            "cfgStart",
+            "cfgEnd",
+            "cfgAutoClose",
+            "cfgWakeupTime"
+        ],
         "projectType": "native",
         "resources": {
             "media": []
         },
         "sdkVersion": "3",
-        
-        "uuid": "d2cb5dda-d554-47d7-bed7-357bd1685ed7",
+        "targetPlatforms": [
+            "emery"
+        ],
+        "uuid": "41176f69-adb9-46f1-b666-033be70fcd25",
         "watchapp": {
             "watchface": false
         }
     },
-    "version": "1.2.1"
+    "version": "1.3.0"
 }
