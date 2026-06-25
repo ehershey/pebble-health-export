@@ -28,7 +28,11 @@ var cfg_wakeup_time = -1;
 var cfg_extra_fields = [];
 
 var to_send = [];
-var senders = [new XMLHttpRequest(), new XMLHttpRequest()];
+var senders = [];
+initSenders();
+function initSenders() {
+   senders = [new XMLHttpRequest(), new XMLHttpRequest()];
+   }
 var i_sender = 1;
 var bundle_size = 0;
 var jsSHA = require("./sha.js");
@@ -54,6 +58,8 @@ function sendPayload(payload) {
    }
 
    i_sender = 1 - i_sender;
+   console.log("i_sender: " + i_sender);
+   console.log("senders[i_sender].readyState: " + senders[i_sender].readyState);
    senders[i_sender].open("POST", cfg_endpoint, true);
    senders[i_sender].setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
    senders[i_sender].send(data);
