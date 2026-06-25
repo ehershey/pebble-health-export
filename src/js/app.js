@@ -189,9 +189,20 @@ Pebble.addEventListener("showConfiguration", function() {
 });
 
 Pebble.addEventListener("webviewclosed", function(e) {
-   var configData = JSON.parse(e.response);
+   console.log("e.response: ");
+   console.log(e.response);
+   var configData;
+   try {
+   configData = JSON.parse(e.response);
+   }
+   catch(error) {
+   console.error("An error occurred:", error.message);
+   configData = JSON.parse(decodeURIComponent(e.response));
+   }
    var wasConfigured = (cfg_endpoint && cfg_data_field);
    var msg = { "cfgEnd": 1 };
+   console.log("configData: ");
+   console.log(configData);
 
    if (configData.url) {
       cfg_endpoint = decodeURIComponent(configData.url);
