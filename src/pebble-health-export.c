@@ -378,7 +378,7 @@ load_minute_data_page(time_t start) {
 		    minute_first, minute_last,
 		    HealthIterationDirectionFuture,
 		    &record_activity,
-		    0);
+		    0);  // developer-supplied context
 	}
 
 	if (!minute_data_size) {
